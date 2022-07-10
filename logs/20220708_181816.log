@@ -1,0 +1,355 @@
+2022-07-08 18:18:16 INFO     [go-micro.cleanup-container] Stop containers...
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-front-end
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-front-end
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-broker-service
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-broker-service
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-authen-service
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-authen-service
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-logger-service
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-logger-service
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-postgres
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-postgres
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-mongo
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-mongo
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-mailhog
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-mailhog
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-mailer-service
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-mailer-service
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-rabbitmq
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-rabbitmq
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-listener-express
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-listener-express
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker stop go-micro-mongo-express
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error response from daemon: No such container: go-micro-mongo-express
+2022-07-08 18:18:16 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker network rm go-micro
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such network: go-micro
+2022-07-08 18:18:17 INFO     [go-micro.cleanup-container] Stop containers successfully
+2022-07-08 18:18:17 INFO     [go-micro.cleanup-container] Remove containers...
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-front-end
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-front-end
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-broker-service
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-broker-service
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-authen-service
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-authen-service
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-logger-service
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-logger-service
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-postgres
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-postgres
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-mongo
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-mongo
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-mailhog
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-mailhog
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-mailer-service
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-mailer-service
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-rabbitmq
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-rabbitmq
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-listener-express
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-listener-express
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker rm go-micro-mongo-express
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such container: go-micro-mongo-express
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Running command: docker network rm go-micro
+2022-07-08 18:18:17 VERBOSE  [go-micro.cleanup-container.run-command] Result: Error: No such network: go-micro
+2022-07-08 18:18:17 INFO     [go-micro.cleanup-container] Stop and remove containers successfully
+2022-07-08 18:18:17 INFO     [go-micro.build-docker] Remove old Docker images
+2022-07-08 18:18:17 VERBOSE  [go-micro.build-docker.run-command] Running command: docker image prune -f --filter label=stage=go-deploy
+2022-07-08 18:18:17 VERBOSE  [go-micro.build-docker.run-command] Result: Total reclaimed space: 0B
+2022-07-08 18:18:17 INFO     [go-micro.build-docker] Start build Docker images
+2022-07-08 18:18:17 VERBOSE  [go-micro.build-docker] Build image with tag: go-micro/authen-service:latest
+2022-07-08 18:18:17 VERBOSE  [go-micro.build-docker.run-command] Running command: docker build -t go-micro/authen-service:latest authentication-service
+2022-07-08 18:18:17 VERBOSE  [go-micro.build-docker.run-command] Result: unable to prepare context: path "authentication-service" not found
+2022-07-08 18:18:17 VERBOSE  [go-micro.build-docker] Build image with tag: go-micro/broker-service:latest
+2022-07-08 18:18:17 VERBOSE  [go-micro.build-docker.run-command] Running command: docker build -t go-micro/broker-service:latest broker-service
+2022-07-08 18:18:58 VERBOSE  [go-micro.build-docker.run-command] Result: Sending build context to Docker daemon   55.3kB
+Step 1/15 : FROM golang:1.18-alpine as builder
+ ---> 155ead2e66ca
+Step 2/15 : LABEL stage=go-builder
+ ---> Running in 3b861ad7f909
+Removing intermediate container 3b861ad7f909
+ ---> 6f05e2748f59
+Step 3/15 : RUN mkdir /app
+ ---> Running in c47fe0137857
+Removing intermediate container c47fe0137857
+ ---> b514edc0258e
+Step 4/15 : COPY . /app
+ ---> 8f0fd00aeb9e
+Step 5/15 : WORKDIR /app
+ ---> Running in d787212d3526
+Removing intermediate container d787212d3526
+ ---> 181d08d6c3b9
+Step 6/15 : RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+ ---> Running in 71fc13459ec7
+[91mgo: downloading google.golang.org/protobuf v1.28.0
+[0m[91mgo: downloading google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.2.0
+[0m[91mgo: downloading google.golang.org/grpc v1.47.0
+[0m[91mgo: downloading google.golang.org/protobuf v1.27.1
+[0mRemoving intermediate container 71fc13459ec7
+ ---> 15fe732058a5
+Step 7/15 : RUN apk update && apk add protoc
+ ---> Running in 522db50b6f17
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/community/x86_64/APKINDEX.tar.gz
+v3.16.0-286-g30edee2642 [https://dl-cdn.alpinelinux.org/alpine/v3.16/main]
+v3.16.0-286-g30edee2642 [https://dl-cdn.alpinelinux.org/alpine/v3.16/community]
+OK: 17029 distinct packages available
+(1/5) Installing libgcc (11.2.1_git20220219-r2)
+(2/5) Installing libstdc++ (11.2.1_git20220219-r2)
+(3/5) Installing libprotobuf (3.18.1-r2)
+(4/5) Installing libprotoc (3.18.1-r2)
+(5/5) Installing protoc (3.18.1-r2)
+Executing busybox-1.35.0-r13.trigger
+OK: 13 MiB in 20 packages
+Removing intermediate container 522db50b6f17
+ ---> f2bbc3395a84
+Step 8/15 : RUN cd /app && protoc --go_out=. --go_opt=paths=source_relative                     --go-grpc_out=. --go-grpc_opt=paths=source_relative                     logs/logs.proto
+ ---> Running in 4465822fd833
+Removing intermediate container 4465822fd833
+ ---> f9a131b6e708
+Step 9/15 : RUN CGO_ENABLED=0 go build -o brokerApp ./cmd/api
+ ---> Running in 7059c00800e3
+[91mgo: downloading github.com/go-chi/chi/v5 v5.0.7
+go: downloading github.com/go-chi/cors v1.2.0
+[0m[91mgo: downloading github.com/rabbitmq/amqp091-go v1.3.4
+go: downloading google.golang.org/grpc v1.45.0
+[0m[91mgo: downloading google.golang.org/protobuf v1.26.0
+[0m[91mgo: downloading google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013
+[0m[91mgo: downloading golang.org/x/net v0.0.0-20200822124328-c89045814202
+[0m[91mgo: downloading github.com/golang/protobuf v1.5.2
+[0m[91mgo: downloading golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd
+[0m[91mgo: downloading golang.org/x/text v0.3.0
+[0mRemoving intermediate container 7059c00800e3
+ ---> 72b5290ff49d
+Step 10/15 : RUN chmod +x /app/brokerApp
+ ---> Running in f3abf001f070
+Removing intermediate container f3abf001f070
+ ---> 73cec487267f
+Step 11/15 : FROM alpine:latest
+ ---> e66264b98777
+Step 12/15 : LABEL stage=go-deploy
+ ---> Using cache
+ ---> b26160aa847b
+Step 13/15 : RUN mkdir /app
+ ---> Using cache
+ ---> 9f146bd43544
+Step 14/15 : COPY --from=builder /app/brokerApp /app
+ ---> 6c51b9180c02
+Step 15/15 : CMD [ "/app/brokerApp" ]
+ ---> Running in abffb633d1b0
+Removing intermediate container abffb633d1b0
+ ---> a0fbb17b49fc
+Successfully built a0fbb17b49fc
+Successfully tagged go-micro/broker-service:latest
+2022-07-08 18:18:58 VERBOSE  [go-micro.build-docker] Build image with tag: go-micro/front-end:latest
+2022-07-08 18:18:58 VERBOSE  [go-micro.build-docker.run-command] Running command: docker build -t go-micro/front-end:latest front-end
+2022-07-08 18:19:07 VERBOSE  [go-micro.build-docker.run-command] Result: Sending build context to Docker daemon  39.42kB
+Step 1/13 : FROM golang:1.18-alpine as builder
+ ---> 155ead2e66ca
+Step 2/13 : LABEL stage=go-builder
+ ---> Using cache
+ ---> 6f05e2748f59
+Step 3/13 : RUN mkdir /app
+ ---> Using cache
+ ---> b514edc0258e
+Step 4/13 : COPY . /app
+ ---> ea680c638ca1
+Step 5/13 : WORKDIR /app
+ ---> Running in 6fa8016abeff
+Removing intermediate container 6fa8016abeff
+ ---> b6f3ff82d644
+Step 6/13 : RUN CGO_ENABLED=0 go build -o frontEnd ./cmd/web
+ ---> Running in 2e3c587bd532
+Removing intermediate container 2e3c587bd532
+ ---> a4391eefc951
+Step 7/13 : RUN chmod +x /app/frontEnd
+ ---> Running in 571d31f04d6e
+Removing intermediate container 571d31f04d6e
+ ---> 80651526063a
+Step 8/13 : FROM alpine:latest
+ ---> e66264b98777
+Step 9/13 : LABEL stage=go-deploy
+ ---> Using cache
+ ---> b26160aa847b
+Step 10/13 : RUN mkdir /app
+ ---> Using cache
+ ---> 9f146bd43544
+Step 11/13 : RUN apk update && apk add curl
+ ---> Using cache
+ ---> 04496bec2790
+Step 12/13 : COPY --from=builder /app /app
+ ---> a12e0aec6ef6
+Step 13/13 : CMD [ "/app/frontEnd" ]
+ ---> Running in 28914df8a728
+Removing intermediate container 28914df8a728
+ ---> f171432b994b
+Successfully built f171432b994b
+Successfully tagged go-micro/front-end:latest
+2022-07-08 18:19:07 VERBOSE  [go-micro.build-docker] Build image with tag: go-micro/logger-service:latest
+2022-07-08 18:19:07 VERBOSE  [go-micro.build-docker.run-command] Running command: docker build -t go-micro/logger-service:latest logger-service
+2022-07-08 18:19:39 VERBOSE  [go-micro.build-docker.run-command] Result: Sending build context to Docker daemon  53.76kB
+Step 1/15 : FROM golang:1.18-alpine as builder
+ ---> 155ead2e66ca
+Step 2/15 : LABEL stage=go-builder
+ ---> Using cache
+ ---> 6f05e2748f59
+Step 3/15 : RUN mkdir /app
+ ---> Using cache
+ ---> b514edc0258e
+Step 4/15 : COPY . /app
+ ---> df6a983386d2
+Step 5/15 : WORKDIR /app
+ ---> Running in 8deb1234c7d3
+Removing intermediate container 8deb1234c7d3
+ ---> 58b1d90bfb74
+Step 6/15 : RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+ ---> Running in 04f00fb84d91
+[91mgo: downloading google.golang.org/protobuf v1.28.0
+[0m[91mgo: downloading google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.2.0
+[0m[91mgo: downloading google.golang.org/grpc v1.47.0
+[0m[91mgo: downloading google.golang.org/protobuf v1.27.1
+[0mRemoving intermediate container 04f00fb84d91
+ ---> 354f0a829445
+Step 7/15 : RUN apk update && apk add protoc
+ ---> Running in f627ca7ad8c4
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/community/x86_64/APKINDEX.tar.gz
+v3.16.0-286-g30edee2642 [https://dl-cdn.alpinelinux.org/alpine/v3.16/main]
+v3.16.0-286-g30edee2642 [https://dl-cdn.alpinelinux.org/alpine/v3.16/community]
+OK: 17029 distinct packages available
+(1/5) Installing libgcc (11.2.1_git20220219-r2)
+(2/5) Installing libstdc++ (11.2.1_git20220219-r2)
+(3/5) Installing libprotobuf (3.18.1-r2)
+(4/5) Installing libprotoc (3.18.1-r2)
+(5/5) Installing protoc (3.18.1-r2)
+Executing busybox-1.35.0-r13.trigger
+OK: 13 MiB in 20 packages
+Removing intermediate container f627ca7ad8c4
+ ---> 457d848f8a8a
+Step 8/15 : RUN cd /app && protoc --go_out=. --go_opt=paths=source_relative                     --go-grpc_out=. --go-grpc_opt=paths=source_relative                     logs/logs.proto
+ ---> Running in 9a3b3bd165a2
+Removing intermediate container 9a3b3bd165a2
+ ---> 12e82825642f
+Step 9/15 : RUN CGO_ENABLED=0 go build -o loggerApp ./cmd/api
+ ---> Running in b79c135db406
+[91mgo: downloading github.com/go-chi/chi/v5 v5.0.7
+[0m[91mgo: downloading github.com/go-chi/cors v1.2.0
+[0m[91mgo: downloading go.mongodb.org/mongo-driver v1.8.4
+[0m[91mgo: downloading google.golang.org/grpc v1.45.0
+[0m[91mgo: downloading github.com/go-chi/chi v1.5.4
+[0m[91mgo: downloading google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013
+[0m[91mgo: downloading golang.org/x/net v0.0.0-20200822124328-c89045814202
+[0m[91mgo: downloading github.com/golang/protobuf v1.5.2
+[0m[91mgo: downloading golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd
+[0m[91mgo: downloading github.com/youmark/pkcs8 v0.0.0-20181117223130-1be2e3e5546d
+[0m[91mgo: downloading github.com/pkg/errors v0.9.1
+[0m[91mgo: downloading github.com/golang/snappy v0.0.1
+[0m[91mgo: downloading github.com/klauspost/compress v1.13.6
+[0m[91mgo: downloading github.com/go-stack/stack v1.8.0
+[0m[91mgo: downloading github.com/xdg-go/scram v1.0.2
+[0m[91mgo: downloading github.com/xdg-go/stringprep v1.0.2
+[0m[91mgo: downloading golang.org/x/crypto v0.0.0-20201216223049-8b5274cf687f
+[0m[91mgo: downloading golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
+[0m[91mgo: downloading golang.org/x/text v0.3.5
+[0m[91mgo: downloading github.com/xdg-go/pbkdf2 v1.0.0
+[0mRemoving intermediate container b79c135db406
+ ---> b9d66abca0e4
+Step 10/15 : RUN chmod +x /app/loggerApp
+ ---> Running in 1dbff425f5ff
+Removing intermediate container 1dbff425f5ff
+ ---> e1562cf51a84
+Step 11/15 : FROM alpine:latest
+ ---> e66264b98777
+Step 12/15 : LABEL stage=go-deploy
+ ---> Using cache
+ ---> b26160aa847b
+Step 13/15 : RUN mkdir /app
+ ---> Using cache
+ ---> 9f146bd43544
+Step 14/15 : COPY --from=builder /app/loggerApp /app
+ ---> 3a5af3b5ff4c
+Step 15/15 : CMD [ "/app/loggerApp" ]
+ ---> Running in bd9575e8fc3b
+Removing intermediate container bd9575e8fc3b
+ ---> 9587e9b96648
+Successfully built 9587e9b96648
+Successfully tagged go-micro/logger-service:latest
+2022-07-08 18:19:39 VERBOSE  [go-micro.build-docker] Build image with tag: go-micro/mailer-service:latest
+2022-07-08 18:19:39 VERBOSE  [go-micro.build-docker.run-command] Running command: docker build -t go-micro/mailer-service:latest mailer-service
+2022-07-08 18:19:40 VERBOSE  [go-micro.build-docker.run-command] Result: unable to prepare context: path "mailer-service" not found
+2022-07-08 18:19:40 INFO     [go-micro.build-docker] Remove builder images
+2022-07-08 18:19:40 VERBOSE  [go-micro.build-docker.run-command] Running command: docker image prune -f --filter label=stage=go-builder
+2022-07-08 18:19:40 VERBOSE  [go-micro.build-docker.run-command] Result: Deleted Images:
+deleted: sha256:73cec487267f922cb6a06e6b7e515a9effbe4ec77d7879eef6265ac9c345dc1a
+deleted: sha256:3dbb0246dfc6ecc65b4f0d043c46670d24720fd7e717fe3c34b74ef1bedb5bbe
+deleted: sha256:72b5290ff49d30f96d9c0c5e39d474588db4ae355c28a126b57d76bc72fc7f23
+deleted: sha256:9148503d32de4fc3cf25fee0ec2ea69cbb6c2c2bb029cc4bba78e68365449dfd
+deleted: sha256:f9a131b6e70867a538cc098fd97c0ed13f90f056943973902cedd7fd32087241
+deleted: sha256:e50e7ce61b0e0c2c25a3d5a949f00bb1f4ca071c258fe3fbef0b7817f9461f51
+deleted: sha256:f2bbc3395a840638508e07b09966fedf4b17df9b65972744f1cd559d9d0286f2
+deleted: sha256:69e5956ec2f9e81a40a03d1c32f4b5b15b6f23c1650642db418e9b30dc401db1
+deleted: sha256:15fe732058a55d1eee0bd8250b1796c1d5163804929006ed766e50bd5b568d9b
+deleted: sha256:1e1b4890daf7939f39cb8d94a4f4393ea3b18facfbf373051abe671cc821565b
+deleted: sha256:181d08d6c3b964ae873c9f65938a9f31e4af94b61c3d4fcaa8e69e63be5824eb
+deleted: sha256:8f0fd00aeb9e3ba0e2827d245cfbb4d4300c13c65aa9fbc0d93f6c1fe1021b5e
+deleted: sha256:0e6753774f30acb429cded4cc03771553bc00be9a08a9fb0f183c316bbcaaedc
+deleted: sha256:80651526063ab275fe7847d2c4967f540018ca15390e8e447129123473fcc5af
+deleted: sha256:f4dd9ee8e6e20e835ceec2d75a4db2d41b61f7702e6f45073579ac669314ac6a
+deleted: sha256:a4391eefc951b328ed5e2d92d87c687b245c70c9d1d0e58d844f75a68ed3ec9e
+deleted: sha256:37529024b0d9c63041d12693cbf4717ab1aff810c43ed10522e7f0871fe74f12
+deleted: sha256:b6f3ff82d644fd482b845c4ae1809812800767cdc601470f2d3b764fe2f9c0c4
+deleted: sha256:ea680c638ca1acb77f380ee46d689c1c1a34d4f026b0a0b346dc5b39b8419898
+deleted: sha256:717a09d4b62ec1a74a22ce7f9d37223aad5f16083a863a2b2cdfd8a15d427f0b
+deleted: sha256:e1562cf51a84a8a474050194165c9972256f17633925a7e68e119760e36ccbf4
+deleted: sha256:52fe3177d2ea6477e2a708c5ee1404a682cf170fe54c7ad2f1e15986254b60ee
+deleted: sha256:b9d66abca0e484396fc5a54515d30b404dc29edbe977c12904ebf5fe77ada8f5
+deleted: sha256:53ed51a07ef95cfe4b4102f2ecbc9d21d1af323be1dd39d20bcf2314b736be54
+deleted: sha256:12e82825642fd2845ba1b7edca3db6024e8ecc58e65d3532b62332a5e748f4de
+deleted: sha256:f20505f81ceaaccfced1e2d403301687b9e1c43d52691c0a97dcc7e96210f229
+deleted: sha256:457d848f8a8abe0209e3fb5ab58699b01bf49439f89d54db128853c7a1177e99
+deleted: sha256:903832a1d39a2adc0cdf2a78a6ed78abad425a0e7c9e104e6973df7fe2700fe9
+deleted: sha256:354f0a8294450f17fda097e34fd6ff278ff6a54c392fc91b40040ddb7217258e
+deleted: sha256:43406375263d7e6c07a03101f588f4538ca4f382e1660bf90afba3d23d690cdb
+deleted: sha256:58b1d90bfb74bddb6f8b8b484c32dce84c7e3d135e2671ef4a726168f20b6d23
+deleted: sha256:df6a983386d2d86b17232649ea28a713ae6b86b7d1d3141168c156ca1906f5ab
+deleted: sha256:9577e87f084f1c901c1097eecb0d4655c9e8ac067c2ec2498dc601cb404b36a4
+deleted: sha256:b514edc0258e93b4340a418e23bc25f678a23d6de1d21413e1793a0527d37ab1
+deleted: sha256:e22cd97c057f1b6e33f3de1e734572b1f80af36d57d63a015a26896c92b82549
+deleted: sha256:6f05e2748f59c8ba52cdfdd2e380508fd64037e6b5ba85e343ab1b82516bcc8a
+
+Total reclaimed space: 786.4MB
+2022-07-08 18:19:40 INFO     [go-micro.build-docker] Done
+2022-07-08 18:19:40 INFO     [go-micro.run-container] Start containers...
+2022-07-08 18:19:40 INFO     [go-micro.run-container] Create network go-micro
+2022-07-08 18:19:40 VERBOSE  [go-micro.run-container.run-command] Running command: docker network create go-micro
+2022-07-08 18:19:40 VERBOSE  [go-micro.run-container.run-command] Result: aa86973e8f2124c6d0456288fca4e3dd5ad6c9cacfe34609b3b4f0cc4719dfbb
+2022-07-08 18:19:40 INFO     [go-micro.run-container] Create container go-micro-front-end
+2022-07-08 18:19:40 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-front-end                                                 --network go-micro                                                 -p 8080:80                                                 go-micro/front-end
+2022-07-08 18:19:41 VERBOSE  [go-micro.run-container.run-command] Result: f8a123e8cf3fedc5265ccad26b861f0557c995e09b64f4ad7b4fa71c91bab26c
+2022-07-08 18:19:41 INFO     [go-micro.run-container] Create container go-micro-broker-service
+2022-07-08 18:19:41 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-broker-service                                                 --network go-micro                                                 -p 8081:80                                                 go-micro/broker-service
+2022-07-08 18:19:42 VERBOSE  [go-micro.run-container.run-command] Result: 663e21184aed274422e1d70ae05e61ebd7182b089c45db31d2c34a36064c5c04
+2022-07-08 18:19:42 INFO     [go-micro.run-container] Create container go-micro-postgres
+2022-07-08 18:19:42 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-postgres                                 -v /local/scratch/znugtar/project/go-micro/db-data/postgres/:/var/lib/postgresql/data/                                 --network go-micro                                 -p 54321:5432                                 -e POSTGRES_USER=postgres                                 -e POSTGRES_PASSWORD=postgres                                 -e POSTGRES_DB=users                                 postgres:14.2
+2022-07-08 18:19:42 VERBOSE  [go-micro.run-container.run-command] Result: 30f0ebc8ca252e76d7a3b8d0e65e7486e09ba45886ab272da685081483a75ec3
+2022-07-08 18:19:42 INFO     [go-micro.run-container] Create container go-micro-mongo
+2022-07-08 18:19:42 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-mongo                                                 -v /local/scratch/znugtar/project/go-micro/db-data/mongo/:/data/db                                                 --network go-micro                                                 -p 27017:27017                                                 -e MONGO_INITDB_DATABASE=logs                                                 -e MONGO_INITDB_ROOT_USERNAME=admin                                                 -e MONGO_INITDB_ROOT_PASSWORD=password                                                 mongo:4.2.16-bionic
+2022-07-08 18:19:43 VERBOSE  [go-micro.run-container.run-command] Result: 8b653e244c73c52366b05b515fc0ea0662dcdfc3ed1e5d5749407ccb33957f8e
+2022-07-08 18:19:43 INFO     [go-micro.run-container] Create container go-micro-authen-service
+2022-07-08 18:19:43 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-authen-service                                                 --network go-micro                                                 -p 8082:80                                                 -e DSN='host=go-micro-postgres port=5432         user=postgres password=postgres         dbname=users sslmode=disable         timezone=UTC+7 connect_timeout=5'                                                 go-micro/authen-service
+2022-07-08 18:19:44 VERBOSE  [go-micro.run-container.run-command] Result: docker: invalid reference format.
+See 'docker run --help'.
+2022-07-08 18:19:44 INFO     [go-micro.run-container] Create container go-micro-logger-service
+2022-07-08 18:19:44 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-logger-service                                                 --network go-micro                                                 -p 8083:80                                                 go-micro/logger-service
+2022-07-08 18:19:45 VERBOSE  [go-micro.run-container.run-command] Result: d1cb09c074758dbeb01fc863445dbeb64430491156c6ac01f7db0b030c53ff07
+2022-07-08 18:19:45 INFO     [go-micro.run-container] Create container go-micro-mailhog
+2022-07-08 18:19:45 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-mailhog                                                 --network go-micro                                                 -p 1025:1025                                                 -p 8025:8025                                                 mailhog/mailhog:latest
+2022-07-08 18:19:46 VERBOSE  [go-micro.run-container.run-command] Result: c68a3e4d31cfa1a6e84f15d094e77925b49a70a1236d590a4e1adb2969dffd09
+2022-07-08 18:19:46 INFO     [go-micro.run-container] Create container go-micro-mailer-service
+2022-07-08 18:19:46 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-mailer-service                                                 --network go-micro                                                 -p 8084:80                                                 -e MAIL_DOMAIN=localhost                                                 -e MAIL_HOST=mailhog                                                 -e MAIL_PORT=1025                                                 -e MAIL_ENCRYPTION=none                                                 -e MAIL_USERNAME=                                                 -e MAIL_PASSWORD=                                                 -e FROM_NAME="John Smith"                                                 -e FROM_ADDRESS=john.smith@example.com                                                 go-micro/mailer-service
+2022-07-08 18:19:46 VERBOSE  [go-micro.run-container.run-command] Result: docker: invalid reference format: repository name must be lowercase.
+See 'docker run --help'.
+2022-07-08 18:19:46 INFO     [go-micro.run-container] Create container go-micro-rabbitmq
+2022-07-08 18:19:46 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-rabbitmq                                                 --network go-micro                                                 -p 5672:5672                                                 -v /local/scratch/znugtar/project/go-micro/db-data/rabbitmq/:/var/lib/rabbitmq/                                                 rabbitmq:3.9-alpine
+2022-07-08 18:19:47 VERBOSE  [go-micro.run-container.run-command] Result: e76b98f5efc9d83f120eea34cb40ec7c029483b5f5d7988b68751a3bd0b1003a
+2022-07-08 18:19:47 INFO     [go-micro.run-container] Create container go-micro-listener-service
+2022-07-08 18:19:47 VERBOSE  [go-micro.run-container.run-command] Running command: docker run -d -it --name go-micro-listener-service                                                 --network go-micro                                                 -p 8085:80                                                 go-micro/listener-service
+2022-07-08 18:19:48 VERBOSE  [go-micro.run-container.run-command] Result: 18ab6bf3e69e695863f08a2e7f05711ce8cf61ada9d34f2b1ab4b7e473859579
+2022-07-08 18:19:48 INFO     [go-micro.run-container] Start containers successfully
