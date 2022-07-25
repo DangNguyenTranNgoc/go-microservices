@@ -4,19 +4,8 @@ services:
 
   broker-service:
     build:
-      context: ./../src/broker-service
-      dockerfile: ./../src/broker-service/Dockerfile
-    restart: always
-    ports:
-      - "8081:80"
-    deploy:
-      mode: replicated
-      replicas: 1
-    
-  front-end:
-    build:
-      context: ./../src/front-end
-      dockerfile: ./../src/front-end/Dockerfile
+      context: ./../broker-service
+      dockerfile: ./../broker-service/broker-service.dockerfile
     restart: always
     ports:
       - "8080:80"
@@ -26,8 +15,8 @@ services:
 
   logger-service:
     build:
-      context: ./../src/logger-service
-      dockerfile: ./../src/logger-service/Dockerfile
+      context: ./../logger-service
+      dockerfile: ./../logger-service/logger-service.dockerfile
     restart: always
     deploy:
       mode: replicated
@@ -35,8 +24,8 @@ services:
 
   mailer-service:
     build:
-      context: ./../src/mail-service
-      dockerfile: ./../src/mail-service/Dockerfile
+      context: ./../mail-service
+      dockerfile: ./../mail-service/mail-service.dockerfile
     restart: always
     deploy:
       mode: replicated
@@ -51,10 +40,10 @@ services:
       FROM_NAME: "John Smith"
       FROM_ADDRESS: john.smith@example.com
 
-  authen-service:
+  authentication-service:
     build:
-      context: ./../src/authen-service
-      dockerfile: ./../src/authen-service/Dockerfile
+      context: ./../authentication-service
+      dockerfile: ./../authentication-service/authentication-service.dockerfile
     restart: always
     ports:
       - "8081:80"
@@ -66,8 +55,8 @@ services:
 
   listener-service:
     build:
-      context: ./../src/listener-service
-      dockerfile: ./../src/listener-service/Dockerfile
+      context: ./../listener-service
+      dockerfile: ./../listener-service/listener-service.dockerfile
     deploy:
       mode: replicated
       replicas: 1

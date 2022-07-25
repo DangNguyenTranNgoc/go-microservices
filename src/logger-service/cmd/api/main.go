@@ -17,7 +17,7 @@ import (
 const (
 	webPort  = "80"
 	rpcPort  = "5001"
-	mongoURL = "mongodb://mongo:27017"
+	mongoURL = "mongodb://go-micro-mongo:27017"
 	gRpcPort = "50001"
 )
 
@@ -50,8 +50,11 @@ func main() {
 		Models: data.New(client),
 	}
 
+	err = rpc.Register(new(RPCServer))
 	go app.rpcListen()
-	
+
+	go app.gRPCListen()
+
 	// start web server
 	log.Println("Starting service on port", webPort)
 	srv := &http.Server{
@@ -67,7 +70,7 @@ func main() {
 }
 
 func (app *Config) rpcListen() error {
-	log.Println("Starting RPC server on port ", rpcPort)
+	log.Println("Starting RPC server on port", rpcPort)
 	listen, err := net.Listen("tcp", fmt.Sprintf("0.0.0.0:%s", rpcPort))
 	if err != nil {
 		return err

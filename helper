@@ -1,0 +1,234 @@
+#!/usr/bin/env bash
+ROOT_DIR=$(dirname $BASH_SOURCE)
+LOGFILE="${ROOT_DIR}/logs"
+PROJECT_NAME="go-micro"
+SILENT=false
+
+. $ROOT_DIR/third_party/utils-tools/bin/logging
+. $ROOT_DIR/third_party/utils-tools/bin/local
+
+PROJECT_NAME="go-micro"
+BUILDER_FILTER="label=stage=go-builder"
+DEPLOY_FILTER="label=stage=go-deploy"
+
+function build-docker() {
+    local folder=$1
+    local label=$2
+    local tag="${PROJECT_NAME}.build-docker"
+    local name=${PROJECT_NAME}/${label}:latest
+    verbose "${tag}" "Build image with tag: ${name}"
+    run-cmd "${tag}" true "docker build -t $name ${folder}"
+}
+
+function build-all() {
+    local tag="${PROJECT_NAME}.build-docker"
+    info "${tag}" "Remove old Docker images"
+    run-cmd "${tag}" true "docker image prune -f --filter ${DEPLOY_FILTER}"
+    info "${tag}" "Start build Docker images"
+    build-docker authen-service authen-service
+    build-docker broker-service broker-service
+    build-docker front-end front-end
+    build-docker logger-service logger-service
+    build-docker mailer-service mailer-service
+    build-docker listener-service listener-service
+    info "${tag}" "Remove builder images"
+    run-cmd "${tag}" true "docker image prune -f --filter ${BUILDER_FILTER}"
+    info "${tag}" "Done"
+}
+
+function run-all() {
+    local tag="${PROJECT_NAME}.run-container"
+    local force=true
+    info "${tag}" "Start containers..."
+
+    info "${tag}" "Create network ${PROJECT_NAME}"
+    run-cmd "${tag}" "${force}" "docker network create ${PROJECT_NAME}"
+    
+    info "${tag}" "Create container ${PROJECT_NAME}-front-end"
+    run-cmd "${tag}" "${force}" "docker run -d -it --name ${PROJECT_NAME}-front-end \
+                                                --network ${PROJECT_NAME} \
+                                                -p 8080:80 \
+                                                ${PROJECT_NAME}/front-end"
+
+    info "${tag}" "Create container ${PROJECT_NAME}-broker-service"
+    run-cmd "${tag}" "${force}" "docker run -d -it --name ${PROJECT_NAME}-broker-service \
+                                                --network ${PROJECT_NAME} \
+                                                -p 8081:80 \
+                                                ${PROJECT_NAME}/broker-service"
+
+    info "${tag}" "Create container ${PROJECT_NAME}-postgres"
+    run-cmd "${tag}" "${force}" "docker run -d -it --name ${PROJECT_NAME}-postgres \
+                                -v /project/go-micro/db-data/postgres/:/var/lib/postgresql/data/ \
+                                --network ${PROJECT_NAME} \
+                                -p 54321:5432 \
+                                -e POSTGRES_USER=postgres \
+                                -e POSTGRES_PASSWORD=postgres \
+                                -e POSTGRES_DB=users \
+                                postgres:14.2"
+
+    info "${tag}" "Create container ${PROJECT_NAME}-mongo"
+    run-cmd "${tag}" "${force}" "docker run -d -it --name ${PROJECT_NAME}-mongo \
+                                                -v /project/go-micro/db-data/mongo/:/data/db \
+                                                --network ${PROJECT_NAME} \
+                                                -p 27017:27017 \
+                                                -e MONGO_INITDB_DATABASE=logs \
+                                                -e MONGO_INITDB_ROOT_USERNAME=admin \
+                                                -e MONGO_INITDB_ROOT_PASSWORD=password \
+                                                mongo:4.2.16-bionic"
+
+    info "${tag}" "Create container ${PROJECT_NAME}-authen-service"
+    run-cmd "${tag}" ${force} "docker run -d -it --name ${PROJECT_NAME}-authen-service \
+                            --network ${PROJECT_NAME} \
+                            -e DSN=\"host=go-micro-postgres port=5432 user=postgres password=postgres dbname=users sslmode=disable timezone=UTC+7 connect_timeout=5\" \
+                            ${PROJECT_NAME}/authen-service"
+    
+    info "${tag}" "Create container ${PROJECT_NAME}-logger-service"
+    run-cmd "${tag}" "${force}" "docker run -d -it --name ${PROJECT_NAME}-logger-service \
+                                                --network ${PROJECT_NAME} \
+                                                ${PROJECT_NAME}/logger-service"
+    
+    info "${tag}" "Create container ${PROJECT_NAME}-mailhog"
+    run-cmd "${tag}" "${force}" "docker run -d -it --name ${PROJECT_NAME}-mailhog \
+                                                --network ${PROJECT_NAME} \
+                                                -p 1025:1025 \
+                                                -p 8025:8025 \
+                                                mailhog/mailhog:latest"
+
+    info "${tag}" "Create container ${PROJECT_NAME}-mailer-service"
+    run-cmd "${tag}" "${force}" "docker run -d -it --name ${PROJECT_NAME}-mailer-service \
+                                                --network ${PROJECT_NAME} \
+                                                -e MAIL_DOMAIN=\"localhost\" \
+                                                -e MAIL_HOST=\"${PROJECT_NAME}-mailhog\" \
+                                                -e MAIL_PORT=1025 \
+                                                -e MAIL_ENCRYPTION=none \
+                                                -e MAIL_USERNAME=\"\" \
+                                                -e MAIL_PASSWORD=\"\" \
+                                                -e FROM_NAME=\"John Smith\" \
+                                                -e FROM_ADDRESS=\"john.smith@example.com\" \
+                                                ${PROJECT_NAME}/mailer-service"
+
+    info "${tag}" "Create container ${PROJECT_NAME}-rabbitmq"
+    run-cmd "${tag}" "${force}" "docker run -d -it --name ${PROJECT_NAME}-rabbitmq \
+                        --network ${PROJECT_NAME} \
+                        -p 15672:15672 \
+                        -v /project/go-micro/db-data/rabbitmq/:/var/lib/rabbitmq/ \
+                        rabbitmq:3.9-management-alpine"
+
+    info "${tag}" "Create container ${PROJECT_NAME}-listener-service"
+    run-cmd "${tag}" "${force}" "docker run -d -it --name ${PROJECT_NAME}-listener-service \
+                                                --network ${PROJECT_NAME} \
+                                                ${PROJECT_NAME}/listener-service"
+
+    info "${tag}" "Start containers successfully"
+}
+
+function stop-containers() {
+    local tag="${PROJECT_NAME}.cleanup-container"
+    local force=false
+    info "${tag}" "Stop containers..."
+
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-front-end"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-broker-service"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-authen-service"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-logger-service"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-postgres"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-mongo"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-mailhog"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-mailer-service"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-rabbitmq"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-listener-service"
+    run-cmd "${tag}" "${force}" "docker stop ${PROJECT_NAME}-mongo-express"
+
+    run-cmd "${tag}" "${force}" "docker network rm ${PROJECT_NAME}"
+    info "${tag}" "Stop containers successfully"
+}
+
+function cleanup() {
+    local tag="${PROJECT_NAME}.cleanup-container"
+    local force=false
+
+    stop-containers
+    info "${tag}" "Remove containers..."
+
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-front-end"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-broker-service"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-authen-service"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-logger-service"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-postgres"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-mongo"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-mailhog"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-mailer-service"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-rabbitmq"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-listener-service"
+    run-cmd "${tag}" "${force}" "docker rm ${PROJECT_NAME}-mongo-express"
+
+    run-cmd "${tag}" "${force}" "docker network rm ${PROJECT_NAME}"
+    info "${tag}" "Stop and remove containers successfully"
+}
+
+function mongo-express() {
+    local tag="${PROJECT_NAME}.run-container"
+    local force=true
+    info "${tag}" "Start Mongo Express containers..."
+
+    run-cmd "${tag}" "${force}" "docker run -it -d \
+                                    --name ${PROJECT_NAME}-mongo-express \
+                                    --network ${PROJECT_NAME} \
+                                    -p 8989:8081 \
+                                    -e ME_CONFIG_BASICAUTH_USERNAME=\"admin\" \
+                                    -e ME_CONFIG_BASICAUTH_PASSWORD=\"password\" \
+                                    -e ME_CONFIG_MONGODB_SERVER=\"${PROJECT_NAME}-mongo\" \
+                                    -e ME_CONFIG_MONGODB_ADMINUSERNAME=\"admin\" \
+                                    -e ME_CONFIG_MONGODB_ADMINPASSWORD=\"password\" \
+                                    -e ME_CONFIG_OPTIONS_EDITORTHEME=\"dracula\" \
+                                    mongo-express"
+    info "${tag}" "Start Mongo Express containers successfully"
+}
+
+setup_logger -l "INFO" -t "${PROJECT_NAME}" -f "${LOGFILE}"
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        build)
+            build-all
+            shift
+            ;;
+        run)
+            run-all
+            shift
+            ;;
+        clean)
+            cleanup
+            shift
+            ;;
+        stop)
+            stop-containers
+            shift
+            ;;
+        mongo-ui)
+            mongo-express
+            shift
+            ;;
+        test)
+            run-cmd "${PROJECT_NAME}.test" true "ls"
+            shift
+            ;;
+        -h|--help)
+            cat <<HELPEOF
+
+NAME
+    Project manage helper (Docker)
+SYNOPSIS
+    helper [build] [run] [clean]
+DESCRIPTION
+    
+
+HELPEOF
+            exit 0 
+            ;;
+        *)
+            echo ""
+            exit 0
+            ;;
+    esac
+done

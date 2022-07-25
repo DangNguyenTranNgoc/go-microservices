@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"html/template"
+	"log"
 	"time"
 
 	"github.com/vanng822/go-premailer/premailer"
@@ -67,6 +68,7 @@ func (m *Mail) SendSMTPMessage(msg Message) error {
 
 	smtpClient, err := server.Connect()
 	if err != nil {
+		log.Println(err)
 		return err
 	}
 
@@ -86,6 +88,7 @@ func (m *Mail) SendSMTPMessage(msg Message) error {
 
 	err = email.Send(smtpClient)
 	if err != nil {
+		log.Println(err)
 		return err
 	}
 
@@ -132,14 +135,14 @@ func (m *Mail) buildPlainTextMessage(msg Message) (string, error) {
 	return plainMessage, nil
 }
 
-func (m *Mail) inlineCSS(str string) (string, error) {
+func (m *Mail) inlineCSS(s string) (string, error) {
 	options := premailer.Options{
 		RemoveClasses:     false,
 		CssToAttributes:   false,
 		KeepBangImportant: true,
 	}
 
-	prem, err := premailer.NewPremailerFromString(str, &options)
+	prem, err := premailer.NewPremailerFromString(s, &options)
 	if err != nil {
 		return "", err
 	}
@@ -152,8 +155,8 @@ func (m *Mail) inlineCSS(str string) (string, error) {
 	return html, nil
 }
 
-func (m *Mail) getEncryption(str string) mail.Encryption {
-	switch str {
+func (m *Mail) getEncryption(s string) mail.Encryption {
+	switch s {
 	case "tls":
 		return mail.EncryptionSTARTTLS
 	case "ssl":

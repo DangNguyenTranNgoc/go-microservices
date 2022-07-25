@@ -11,7 +11,7 @@ import (
 )
 
 type Consumer struct {
-	conn *amqp.Connection
+	conn      *amqp.Connection
 	queueName string
 }
 
@@ -114,7 +114,7 @@ func handlePayload(payload Payload) {
 func logEvent(entry Payload) error {
 	jsonData, _ := json.MarshalIndent(entry, "", "\t")
 
-	logServiceURL := "http://logger-service/log"
+	logServiceURL := "http://go-micro-logger-service/log"
 
 	request, err := http.NewRequest("POST", logServiceURL, bytes.NewBuffer(jsonData))
 	if err != nil {
@@ -134,6 +134,6 @@ func logEvent(entry Payload) error {
 	if response.StatusCode != http.StatusAccepted {
 		return err
 	}
-	
+
 	return nil
 }

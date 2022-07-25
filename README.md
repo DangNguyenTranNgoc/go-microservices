@@ -15,19 +15,26 @@ Mini project microservices with Golang
 - Mailhog
 
 ## 🔰 Architecture 🔰
+ 
  TBD
 
 ## 🔰 How to build and run 🔰
 
 ### Docker
 
-1. Using Docker Compose
+#### Using Docker Compose
 
-TBD
+Deploy project with [Docker Compose](https://docs.docker.com/compose/)
+#### Using automation script
 
-2. Using automation script
+**Using with Bash verion >= 4** *(To check Bash version, use: bash --version)*
 
-TBD
+1. Go to source code folder.
+2. **❗️IMPORTANT:** Update submodule ```git submodule update --init --recursive```
+3. Grant permission ```chmod +x helper```
+4. Run helper's help menu ```./helper help```
+5. Happy deploying
+
 ### Kubernetes
 
 TBD

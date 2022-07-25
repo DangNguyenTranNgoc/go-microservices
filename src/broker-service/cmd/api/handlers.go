@@ -80,7 +80,7 @@ func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
 func (app *Config) logItem(w http.ResponseWriter, entry LogPayload) {
 	jsonData, _ := json.MarshalIndent(entry, "", "\t")
 
-	logServiceURL := "http://logger-service/log"
+	logServiceURL := "http://go-micro-logger-service/log"
 
 	request, err := http.NewRequest("POST", logServiceURL, bytes.NewBuffer(jsonData))
 	if err != nil {
@@ -118,7 +118,7 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
 	jsonData, _ := json.MarshalIndent(a, "", "\t")
 
 	// call the service
-	request, err := http.NewRequest("POST", "http://authentication-service/authenticate", bytes.NewBuffer(jsonData))
+	request, err := http.NewRequest("POST", "http://go-micro-authen-service/authenticate", bytes.NewBuffer(jsonData))
 	if err != nil {
 		app.errorJSON(w, err)
 		return
@@ -169,7 +169,7 @@ func (app *Config) sendMail(w http.ResponseWriter, msg MailPayload) {
 	jsonData, _ := json.MarshalIndent(msg, "", "\t")
 
 	// call the mail service
-	mailServiceURL := "http://mailer-service/send"
+	mailServiceURL := "http://go-micro-mailer-service/send"
 
 	// post to mail service
 	request, err := http.NewRequest("POST", mailServiceURL, bytes.NewBuffer(jsonData))
@@ -249,7 +249,7 @@ type RPCPayload struct {
 
 // logItemViaRPC logs an item by making an RPC call to the logger microservice
 func (app *Config) logItemViaRPC(w http.ResponseWriter, l LogPayload) {
-	client, err := rpc.Dial("tcp", "logger-service:5001")
+	client, err := rpc.Dial("tcp", "go-micro-logger-service:5001")
 	if err != nil {
 		app.errorJSON(w, err)
 		return
@@ -284,7 +284,7 @@ func (app *Config) LogViaGRPC(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	conn, err := grpc.Dial("logger-service:50001", grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
+	conn, err := grpc.Dial("go-micro-logger-service:50001", grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
 	if err != nil {
 		app.errorJSON(w, err)
 		return
@@ -296,7 +296,7 @@ func (app *Config) LogViaGRPC(w http.ResponseWriter, r *http.Request) {
 	defer cancel()
 
 	_, err = c.WriteLog(ctx, &logs.LogRequest{
-		LogEntry: &logs.Log {
+		LogEntry: &logs.Log{
 			Name: requestPayload.Log.Name,
 			Data: requestPayload.Log.Data,
 		},
