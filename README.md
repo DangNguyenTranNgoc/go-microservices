@@ -20,7 +20,7 @@ Mini project microservices with Golang
 
 ## 🔰 How to build and run 🔰
 
-### Docker
+### 🐳 Docker 🐳
 
 #### Using Docker Compose
 
@@ -35,6 +35,10 @@ Deploy project with [Docker Compose](https://docs.docker.com/compose/)
 4. Run helper's help menu ```./helper help```
 5. Happy deploying
 
-### Kubernetes
+![Clean, build images, and run containers (command ./helper clean build run mongo-ui)](./images/console-01.png)
+
+![Front end](./images/front-end-01.png)
+
+### 🚢 Kubernetes 🚢
 
 TBD
