@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: private-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: private-registry
+  template:
+    metadata:
+      labels:
+        app: private-registry
+    spec:
+      volumes:
+        - name: certs-vol
+          hostPath:
+          path: /opt/certs
+          type: Directory
+        - name: registry-vol
+          hostPath:
+          path: /opt/registry
+          type: Directory
+      containers:
+        - image: registry:2.8
+          name: private-registry
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: REGISTRY_HTTP_TLS_CERTIFICATE
+              value: "/certs/registry.crt"
+            - name: REGISTRY_HTTP_TLS_KEY
+              value: "/certs/registry.key"
+          ports:
+            - containerPort: 5000
+              volumeMounts:
+            - name: certs-vol
+              mountPath: /certs
+            - name: registry-vol
+              mountPath: /var/lib/registry
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: private-registry
+spec:
+  selector:
+    app: private-registry
+  ports:
+    - protocol: TCP
+      name: main-port
+      port: 5000
+      targetPort: 5000
